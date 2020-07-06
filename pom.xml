@@ -12,10 +12,11 @@
     <artifactId>springDemoHW</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>springDemoHW</name>
+    <packaging>jar</packaging>
     <description>Demo project for Spring Boot</description>
 
     <properties>
-            <start-class>com.example.springDemoHW.SpringDemoHwApplication</start-class>
+        <start-class>com.example.springDemoHW.SpringDemoHwApplication</start-class>
         <java.version>1.8</java.version>
     </properties>
 
@@ -45,6 +46,13 @@
                     <artifactId>junit-vintage-engine</artifactId>
                 </exclusion>
             </exclusions>
+        </dependency>
+
+        <!--Logback-->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.2.3</version>
         </dependency>
     </dependencies>
 

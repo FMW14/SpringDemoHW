@@ -1,0 +1,44 @@
+<configuration>
+    <property name="HOME_LOG" value="logs/file.log" />
+    <property name="HOME_ERR" value="logs/file.err" />
+<!--    <property name="HOME_LOG" value="C:\\Labtemp\\logbacktest\\file.log" />-->
+<!--    <property resource="application.properties" />-->
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+        <file>${HOME_LOG}</file>
+        <append>true</append>
+        <immediateFlush>true</immediateFlush>
+        <encoder>
+            <pattern>%d %p %c{1.} [%t] %m%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="FILE_ERR_FILTER" class="ch.qos.logback.core.FileAppender">
+        <file>${HOME_ERR}</file>
+<!--        <append>true</append>-->
+<!--        <immediateFlush>true</immediateFlush>-->
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>ERROR</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <encoder>
+            <pattern>%d %p %c{1.} [%t] %m%n</pattern>
+        </encoder>
+
+<!--        <target>${HOME_LOG}</target>-->
+    </appender>
+
+    <root level="info">
+        <appender-ref ref="STDOUT" />
+        <appender-ref ref="FILE"/>
+        <appender-ref ref="FILE_ERR_FILTER"/>
+    </root>
+
+</configuration>
