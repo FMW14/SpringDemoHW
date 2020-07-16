@@ -37,6 +37,17 @@ public class MainController {
         return "err";
     }
 
+    @GetMapping("/testlogs")
+    public String testlogs(Model model) {
+        logger.info("GET request received for \"/testlogs\"");
+
+        for (int i = 0; i < 1000; i++) {
+            logger.info("THIS IS TEST RECORD #" + i);
+        }
+
+        return "testogs";
+    }
+
     public int simulate() throws NullPointerException{
         throw new NullPointerException("NPM EXCEPTION TEST");
     }
